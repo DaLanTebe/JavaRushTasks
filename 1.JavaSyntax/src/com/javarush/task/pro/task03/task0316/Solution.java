@@ -16,7 +16,7 @@ public class Solution {
         else if (speed > 3) {
             System.out.println("Скорость лифта слишком высокая, снижаем...");
             speed = 3;
-        } else if (speed <= 3 && speed >= 0) {
+        } else  {
             System.out.println("Скорость лифта в норме");
         }
     }
