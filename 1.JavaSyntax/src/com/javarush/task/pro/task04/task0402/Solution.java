@@ -11,10 +11,8 @@ public class Solution {
         String text = " любит меня.";
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
-        int x = 10;
-        while (x > 0) {
+        for (int x = 10; x >0; x--) {
             System.out.println(name + text);
-            x--;
         }
     }
 }
