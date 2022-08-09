@@ -11,12 +11,16 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
         int sum = 0;
         String enter = "ENTER";
-        boolean Enter = false;
-        while (true) {
-            int a = scanner.nextInt();
-            sum += a;
-            if (scanner.hasNextLine())
-
+        boolean isEnter = false;
+        while (!isEnter) {
+            if (scanner.hasNextInt()) {
+                int a = scanner.nextInt();
+                sum += a;
+            }else if (scanner.hasNextLine()){
+                String word = scanner.nextLine();
+                if (word.equals("ENTER"))
+                    isEnter = true;
+            }
         }
         System.out.println(sum);
     }
