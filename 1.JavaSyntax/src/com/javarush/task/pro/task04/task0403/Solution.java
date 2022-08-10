@@ -10,7 +10,6 @@ public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int sum = 0;
-        String enter = "ENTER";
         boolean isEnter = false;
         while (!isEnter) {
             if (scanner.hasNextInt()) {
