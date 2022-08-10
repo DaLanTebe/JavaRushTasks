@@ -8,21 +8,16 @@ public class Solution {
     public static void main(String[] args) {
         int a = 0;
         while (a < 10) {
-            int d = 0;
-            int c =0;
             int b = 0;
-            if (a == 0 || a == 9)
-                while (b < 20) {
+            while (b < 20) {
+                if (a == 0 || a == 9) {
                     System.out.print("Б");
-                    b++;
-                }else if (a != 0 || a !=9){
-                    while (c < 20){
-                        if (c == 0 || c == 19) {
-                            System.out.print("Б");
-                        }else
-                                System.out.print(" ");
-                        c++;
-                    }
+                } else if (b == 0 || b == 19) {
+                    System.out.print("Б");
+                } else {
+                    System.out.print(" ");
+                }
+                b++;
             }
             System.out.println("");
             a++;
