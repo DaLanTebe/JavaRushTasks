@@ -10,15 +10,14 @@ public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int sum = 0;
-        boolean isEnter = false;
-        while (!isEnter) {
+        while (true) {
             if (scanner.hasNextInt()) {
                 int a = scanner.nextInt();
                 sum += a;
-            }else if (scanner.hasNextLine()){
+            } else if (scanner.hasNextLine()) {
                 String word = scanner.nextLine();
                 if (word.equals("ENTER"))
-                    isEnter = true;
+                    break;
             }
         }
         System.out.println(sum);

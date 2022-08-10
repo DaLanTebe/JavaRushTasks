@@ -12,9 +12,8 @@ public class Solution {
             a++;
             if (0 == a % 3) {
                 continue;
-            }else {
-                sum = sum + a;
             }
+            sum = sum + a;
         }
         System.out.println(sum);
 
