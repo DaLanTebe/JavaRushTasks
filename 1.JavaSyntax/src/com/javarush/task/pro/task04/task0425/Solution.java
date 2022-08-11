@@ -15,13 +15,11 @@ public class Solution {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
             for (int k = 0; k < 10; k++) {
-                if (i == 8 && k == 3){
-                    System.out.print(robot);
-                }else if (k == 3 && i != 9){
+                 if (k == 3 && i != 9){
                     System.out.print(hole);
                 }
                 else if (i == 9){
-                    System.out.print(bug);
+                    System.out.print(death);
                 }else {
                     System.out.print(land);
                 }
