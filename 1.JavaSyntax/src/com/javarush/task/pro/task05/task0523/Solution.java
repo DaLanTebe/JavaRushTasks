@@ -1,0 +1,19 @@
+package com.javarush.task.pro.task05.task0523;
+
+/* 
+Охота на Кибердракона
+*/
+
+public class Solution {
+    public static int[] coordinates = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    public static void main(String[] args) {
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < coordinates.length; i++) {
+            if (!(0 == coordinates[i] % 2)) {
+                x += coordinates[i];
+            }else y += coordinates[i];
+        }
+        System.out.print("(" + x + ";" + y + ")");
+    }
+}
