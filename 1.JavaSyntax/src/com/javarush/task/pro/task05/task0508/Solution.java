@@ -17,29 +17,14 @@ public class Solution {
             strings[i] = scanner.nextLine();
         }
         for (int i = 0; i < strings.length; i++) {
-            if (strings[0].equals(strings[i])) {
-                strings[0].equals(null);
-                continue;
-            }
-            if (strings[1].equals(strings[i])) {
-                strings[1].equals(null);
-                continue;
-            }
-            if (strings[2].equals(strings[i])) {
-                strings[2].equals(null);
-                continue;
-            }
-            if (strings[3].equals(strings[i])) {
-                strings[3].equals(null);
-                continue;
-            }
-            if (strings[4].equals(strings[i])) {
-                strings[4].equals(null);
-                continue;
-            }
-            if (strings[5].equals(strings[i])) {
-                strings[5].equals(null);
-                continue;
+            String str = strings[i];
+            for (int j = i + 1; j < strings.length; j++) {
+                if (str == null)
+                    break;
+                if (str.equals(strings[j])) {
+                    strings[i] = null;
+                    strings[j] = null;
+                }
             }
         }
         for (int i = 0; i < strings.length; i++) {
