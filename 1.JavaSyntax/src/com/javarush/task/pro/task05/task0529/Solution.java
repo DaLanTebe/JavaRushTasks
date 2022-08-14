@@ -25,26 +25,17 @@ public class Solution {
                 if (j == x) {
                     field[i][j] = robotank;
                 }
-            }
-        }
-        for (int i = 0; i < bombs.length; i++) {
-            for (int j = 0; j < bombs[i].length; j++) {
                 if (j < 10){
                     bombs[i][j] = 1;
                 }else {
                     bombs[i][j] = 0;
                 }
-            }
-        }
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
                 if (bombs[i][j] == 1 && field[i][j].equals(robotank)){
                     field[i][j] = hit;
-                    System.out.println(field[i][j]);
                 }
-                System.out.println("");
+                System.out.print(field[i][j]);
             }
-
+            System.out.println("");
         }
     }
 }
