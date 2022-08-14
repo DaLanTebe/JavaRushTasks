@@ -14,6 +14,7 @@ public class Solution {
     public static int height = 10;
     public static String[][] array = new String[width][height];
     public static String[][] field = new String[height][width];
+    public static int[][] bombs = new int[height][width];
 
     public static void main(String[] args) {
         int n = width;
@@ -21,12 +22,21 @@ public class Solution {
             int x = (int) (Math.random() * n);
             for (int j = 0; j < field[i].length; j++) {
                 field[i][j] = empty;
-                if (j == x){
+                if (j == x) {
                     field[i][j] = robotank;
                 }
                 System.out.print(field[i][j]);
             }
             System.out.println("");
+        }
+        for (int i = 0; i < bombs.length; i++) {
+            for (int j = 0; j < bombs[i].length; j++) {
+                if (j < 10){
+                    bombs[i][j] = 1;
+                }else {
+                    bombs[i][j] = 0;
+                }
+            }
         }
     }
 }
