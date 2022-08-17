@@ -18,6 +18,7 @@ public class Solution {
 
     public static void main(String[] args) {
         int n = width;
+
         for (int i = 0; i < field.length; i++) {
             int x = (int) (Math.random() * n);
             for (int j = 0; j < field[i].length; j++) {
@@ -25,14 +26,31 @@ public class Solution {
                 if (j == x) {
                     field[i][j] = robotank;
                 }
-                if (j < 10){
-                    bombs[i][j] = 1;
-                }else {
-                    bombs[i][j] = 0;
+            }
+        }
+        int countOfTanks = 10;
+        while (countOfTanks > 0) {
+            for (int k = 0; k < bombs.length; k++) {
+                int countOfBombs = 10;
+                while (countOfBombs > 0) {
+                    int a = (int) (Math.random() * width);
+                    if (bombs[k][a] == 0) {
+                        bombs[k][a] = 1;
+                        countOfBombs--;
+                    }
                 }
-                if (bombs[i][j] == 1 && field[i][j].equals(robotank)){
-                    field[i][j] = hit;
+            }
+            for (int j = 0; j < field.length; j++) {
+                for (int k = 0; k < field[j].length; k++) {
+                    if (field[j][k].equals(robotank) && bombs[j][k] == 1) {
+                        field[j][k] = hit;
+                        countOfTanks--;
+                    }
                 }
+            }
+        }
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
                 System.out.print(field[i][j]);
             }
             System.out.println("");
