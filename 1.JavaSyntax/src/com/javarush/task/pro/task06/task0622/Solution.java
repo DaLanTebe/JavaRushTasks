@@ -71,7 +71,8 @@ public class Solution {
             }
         }
     }
-    public static boolean isAmigoWin(){
+
+    public static boolean isAmigoWin() {
         return diabloLives == 0;
     }
 

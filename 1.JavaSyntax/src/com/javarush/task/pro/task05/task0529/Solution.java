@@ -14,7 +14,7 @@ public class Solution {
     public static int height = 10;
     public static String[][] array = new String[width][height];
     public static String[][] field = new String[height][width];
-    public static int[][] bombs = new int[height][width];
+//    public static int[][] bombs = new int[height][width];
 
     public static void main(String[] args) {
         int n = width;
@@ -30,6 +30,7 @@ public class Solution {
         }
         int countOfTanks = 10;
         while (countOfTanks > 0) {
+           int[][] bombs = new int[height][width];
             for (int k = 0; k < bombs.length; k++) {
                 int countOfBombs = 10;
                 while (countOfBombs > 0) {
@@ -49,6 +50,7 @@ public class Solution {
                 }
             }
         }
+
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[i].length; j++) {
                 System.out.print(field[i][j]);
