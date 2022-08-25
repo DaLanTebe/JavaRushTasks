@@ -6,9 +6,12 @@ public class Nimrod {
     public static int angelicaKiss;
     public int health = 1_000_000;
     public void defend(int a){
-        health = health - a;
+        health = health - applyShield(a);
     }
     public int attack(){
         return rocket;
+    }
+    public byte applyShield (int a){
+        return (byte) a;
     }
 }
