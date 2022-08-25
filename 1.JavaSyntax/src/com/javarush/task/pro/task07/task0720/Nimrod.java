@@ -9,7 +9,7 @@ public class Nimrod {
         health = health - applyShield(a);
     }
     public int attack(){
-        return rocket;
+        return angelicaKiss;
     }
     public byte applyShield (int a){
         return (byte) a;
