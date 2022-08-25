@@ -13,12 +13,16 @@ public class BattleField {
     public static String galavirDestroy = "Вражеский корабль повержен";
 
     public static void main(String[] args) {
-        GalavirXIII GalavirXIII = new GalavirXIII();
-        Nimrod Nimrod = new Nimrod();
+        GalavirXIII galavirXIII = new GalavirXIII();
+        Nimrod nimrod = new Nimrod();
         do{
             System.out.println(galavirAttack);
-            Nimrod.defend(GalavirXIII.attack());
-        }while (isNimrodAlive(Nimrod));
+            nimrod.defend(galavirXIII.attack());
+            if (isNimrodAlive(nimrod)){
+                System.out.println(nimrodAttack);
+                galavirXIII.defend(nimrod.attack());
+            }else break;
+        }while (isGalavirAlive(galavirXIII));
     }
 
     public static boolean isNimrodAlive(Nimrod nimrod) {
