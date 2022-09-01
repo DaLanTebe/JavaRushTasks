@@ -52,8 +52,6 @@ public class NimrodAi {
     }
 
     public static String[] getRoomByName(String roomName) {
-        switch (roomName){
-            case (roomName[0].eq)
-        }
+   return null;
     }
 }
