@@ -24,7 +24,6 @@ public class NimrodAi {
     }
 
     public static void replaceTarget(PastryLoader[] pastryLoaders) {
-        //напишите тут ваш код
 
     }
 }
