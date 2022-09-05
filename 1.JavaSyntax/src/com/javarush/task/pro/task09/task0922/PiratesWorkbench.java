@@ -33,12 +33,19 @@ public class PiratesWorkbench {
     }
 
     public static void corruptDB() {
-        //напишите тут ваш код
+        int counter = 0;
+        for (int i = 0; i < piratesDB.length && counter < 2; i++) {
+            if (piratesDB[i].contains("b")) {
+                piratesDB[i] = piratesDB[i].replaceAll("b", "\b");
+                counter++;
+            }
+        }
 
     }
 
     public static void addTwoNames() {
-        //напишите тут ваш код
-
+        piratesDB = Arrays.copyOf(piratesDB, piratesDB.length + 2);
+        piratesDB[piratesDB.length - 2] = "Рыжий Амиго";
+        piratesDB[piratesDB.length - 1] = "Одноглазый Диего";
     }
 }
