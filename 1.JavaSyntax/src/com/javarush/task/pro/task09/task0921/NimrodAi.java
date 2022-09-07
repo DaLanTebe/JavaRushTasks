@@ -11,7 +11,7 @@ public class NimrodAi {
     public static void main(String[] args) {
         PastryLoader[] pastryLoaders = new PastryLoader[]{new PastryLoader(), new PastryLoader(), new PastryLoader()};
 
-        scanMemory(pastryLoaders);
+       scanMemory(pastryLoaders);
         replaceTarget(pastryLoaders);
         scanMemory(pastryLoaders);
     }
@@ -24,6 +24,19 @@ public class NimrodAi {
     }
 
     public static void replaceTarget(PastryLoader[] pastryLoaders) {
-
+        for (PastryLoader pastryLoader : pastryLoaders) {
+            String[][][] array = pastryLoader.memory;
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[i].length; j++) {
+                    for (int k = 0; k < array[i][j].length; k++) {
+                        String string = array[i][j][k];
+                        String str = string.toLowerCase();
+                        if (str.contains("nimrod")) {
+                            array[i][j][k] = str.replaceAll("nimrod", "pirate ship");
+                        }
+                    }
+                }
+            }
+        }
     }
 }
