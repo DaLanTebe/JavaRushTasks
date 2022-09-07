@@ -12,23 +12,17 @@ public class Solution {
         String str = "";
         if (debugAccess("Раб")) {
             str = "Раб";
-        }
-        if (debugAccess("Гость")) {
+        } else if (debugAccess("Гость")) {
             str = "Гость";
-        }
-        if (debugAccess("Боец")) {
+        } else if (debugAccess("Боец")) {
             str = "Боец";
-        }
-        if (debugAccess("Ветеран")) {
+        } else if (debugAccess("Ветеран")) {
             str = "Ветеран";
-        }
-        if (debugAccess("Картографист")) {
+        } else if (debugAccess("Картографист")) {
             str = "Картографист";
-        }
-        if (debugAccess("Капитан")) {
+        } else if (debugAccess("Капитан")) {
             str = "Капитан";
-        }
-        if (debugAccess("Стив")) {
+        } else if (debugAccess("Стив")) {
             str = "Стив";
         }
         checkAccess(str);
