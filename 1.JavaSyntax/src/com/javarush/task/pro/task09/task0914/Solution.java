@@ -13,9 +13,10 @@ public class Solution {
     }
 
     public static String changePath(String path, String jdk) {
-        int begin = path.indexOf("jdk");
-        int end = path.indexOf("/", begin);
-        String a = path.substring(begin, end);
-        return path.replace(a, jdk);
+//        int begin = path.indexOf("jdk");
+//        int end = path.indexOf("/", begin);
+//        String a = path.substring(begin, end);
+//        return path.replace(a, jdk);
+        return path.replaceAll("jdk.*?/", jdk + "/");
     }
 }
