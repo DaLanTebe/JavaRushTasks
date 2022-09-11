@@ -27,15 +27,11 @@ public class Solution {
                 String string = morals[i][j].toLowerCase();
 
                 if (string.contains("killer")) {
-                    int start = string.indexOf("killer");
-                    int end = start + "killer".length();
-                    String str = string.substring(start, end);
-                    morals[i][j] = string.replace(str, "compassion");
+                    morals[i][j] = "compassion";
                 } else if (string.contains("thief")) {
-                    int start = string.indexOf("thief");
-                    int end = start + "thief".length();
-                    String str = string.substring(start, end);
-                    morals[i][j] = string.replace(str, "fairness");
+                    morals[i][j] = "fairness";
+                }else if (string.contains("bully")) {
+                    morals[i][j] = ("respect");
                 }
             }
         }
