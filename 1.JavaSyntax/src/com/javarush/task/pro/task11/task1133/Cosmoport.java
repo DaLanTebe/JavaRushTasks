@@ -4,12 +4,11 @@ package com.javarush.task.pro.task11.task1133;
 Компилятор космопорта
 */
 
-
 import java.util.Random;
 
 public class Cosmoport {
     public static Compiler COMPILER = new Compiler();
-    public static RoboZombie[] roboZombies = Cosmoport.RoboZombieFactory.produce();
+    public static RoboZombie[] roboZombies = RoboZombieFactory.produce();
 
     public static void main(String[] args) {
         for (RoboZombie roboZomby : roboZombies) {
@@ -30,6 +29,7 @@ public class Cosmoport {
                 army[i] = new RoboZombie();
                 COMPILER.compile(army[i]);
             }
+
             return army;
         }
     }
