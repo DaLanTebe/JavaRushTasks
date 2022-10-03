@@ -4,6 +4,11 @@ public class StringsLinkedList {
     private Node first = new Node();
     private Node last = new Node();
 
+    public StringsLinkedList(){
+        first.next = last;
+        last.prev = first;
+    }
+
     public void printAll() {
         Node currentElement = first.next;
         while ((currentElement) != null) {
@@ -13,14 +18,13 @@ public class StringsLinkedList {
     }
 
     public void add(String value) {
-        Node val = new Node();
-            val.value = value;
-            if (first.next == null){
-                last.prev = val;
-            }else {
-                last.prev = first.next;
-            }
-            first.next = val;
+        Node node = new Node();
+        node.value = value;
+
+        Node lastNode = last.prev;
+        lastNode.next = node;
+        node.prev = lastNode;
+        last.prev = node;
     }
 
     public static class Node {
