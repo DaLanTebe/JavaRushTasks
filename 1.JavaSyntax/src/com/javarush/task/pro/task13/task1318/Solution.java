@@ -9,9 +9,12 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(getNextMonth(Month.JANUARY));
         System.out.println(getNextMonth(Month.JULY));
+        System.out.println(getNextMonth(Month.DECEMBER));
     }
 
     public static Month getNextMonth(Month month) {
-        return null;
+        return month.ordinal() == 11 ?
+                Month.values()[0] :
+                Month.values()[month.ordinal() + 1];
     }
 }
