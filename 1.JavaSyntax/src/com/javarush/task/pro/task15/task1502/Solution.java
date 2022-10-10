@@ -8,11 +8,15 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
+        Scanner scanner = new Scanner(System.in);
+        try  {
             String line = scanner.nextLine();
             System.out.println(line.toUpperCase());
+            scanner.close();
         } catch (Exception e) {
             System.out.println("Something went wrong : " + e);
+        } finally {
+            scanner.close();
         }
     }
 }
