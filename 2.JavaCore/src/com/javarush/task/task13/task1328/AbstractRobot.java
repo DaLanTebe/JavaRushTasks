@@ -1,4 +1,5 @@
 package com.javarush.task.task13.task1328;
 
-public class AbstractRobot {
+public abstract class AbstractRobot implements Attackable, Defensable{
+
 }
