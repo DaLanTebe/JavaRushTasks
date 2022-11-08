@@ -7,12 +7,10 @@ public abstract class Money {
         this.amount = amount;
     }
 
-
-    public abstract String getCurrencyName();
-
     public double getAmount() {
-        return amount;
+        return this.amount;
     }
 
+    public abstract String getCurrencyName();
 }
 

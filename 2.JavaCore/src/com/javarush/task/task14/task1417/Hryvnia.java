@@ -8,6 +8,11 @@ public class Hryvnia extends Money{
     }
 
     @Override
+    public double getAmount() {
+        return 0;
+    }
+
+    @Override
     public String getCurrencyName() {
         return "UAH";
     }

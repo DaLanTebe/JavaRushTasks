@@ -7,6 +7,11 @@ public class Ruble extends Money{
     }
 
     @Override
+    public double getAmount() {
+        return 0;
+    }
+
+    @Override
     public String getCurrencyName() {
         return "RUB";
     }
