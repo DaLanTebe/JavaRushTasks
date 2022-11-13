@@ -6,7 +6,9 @@ public abstract class DrinkMaker {
     abstract void pour();
 
     public void makeDrink(){
-
+        getRightCup();
+        putIngredient();
+        pour();
     }
 
 }
