@@ -42,12 +42,12 @@ public class Game2048 extends Game {
         }
     }
 
-    private boolean compressRow(int[] row){
+    private boolean compressRow(int[] row) {
         boolean flag = false;
         int position = 0;
         for (int i = 0; i < row.length; i++) {
-            if (row[i] > 0){
-                if (i != position){
+            if (row[i] > 0) {
+                if (i != position) {
                     row[position] = row[i];
                     row[i] = 0;
                     flag = true;
@@ -58,10 +58,10 @@ public class Game2048 extends Game {
         return flag;
     }
 
-    private  boolean mergeRow(int[] row){
+    private boolean mergeRow(int[] row) {
         boolean flag = false;
         for (int i = 0; i < row.length - 1; i++) {
-            if (row[i] != 0 && row[i] == row[i + 1]){
+            if (row[i] != 0 && row[i] == row[i + 1]) {
                 row[i] += row[i + 1];
                 row[i + 1] = 0;
                 flag = true;
@@ -72,25 +72,46 @@ public class Game2048 extends Game {
 
     @Override
     public void onKeyPress(Key key) {
-        if(key == Key.UP){
+        if (key == Key.UP) {
             moveUp();
             drawScene();
         } else if (key == Key.DOWN) {
             moveDown();
             drawScene();
-        }else if (key == Key.LEFT) {
+        } else if (key == Key.LEFT) {
             moveLeft();
             drawScene();
-        }else if (key == Key.RIGHT) {
+        } else if (key == Key.RIGHT) {
             moveRight();
             drawScene();
         }
     }
 
-    private void moveUp(){}
-    private void moveRight(){}
-    private void moveDown(){}
-    private void moveLeft(){
+    private void moveUp() {
+    rotateClockwise();
+    rotateClockwise();
+    rotateClockwise();
+    moveLeft();
+    rotateClockwise();
+    }
+
+    private void moveRight() {
+        rotateClockwise();
+        rotateClockwise();
+        moveLeft();
+        rotateClockwise();
+        rotateClockwise();
+    }
+
+    private void moveDown() {
+        rotateClockwise();
+        moveLeft();
+        rotateClockwise();
+        rotateClockwise();
+        rotateClockwise();
+    }
+
+    private void moveLeft() {
         boolean isNewNumberNeeded = false;
         for (int[] row : gameField) {
             boolean wasCompressed = compressRow(row);
@@ -105,6 +126,16 @@ public class Game2048 extends Game {
         if (isNewNumberNeeded) {
             createNewNumber();
         }
+    }
+
+    private void rotateClockwise() {
+        int[][] temp = new int[SIDE][SIDE];
+        for (int i = 0; i < SIDE; i++) {
+            for (int j = 0; j < SIDE; j++) {
+                temp[j][SIDE - 1 - i] = gameField[i][j];
+            }
+        }
+        gameField = temp;
     }
 
     private void setCellColoredNumber(int x, int y, int value) {
