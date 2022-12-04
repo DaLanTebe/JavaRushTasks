@@ -231,7 +231,7 @@ public class Game2048 extends Game {
                 break;
             }
             case 32: {
-                color = Color.BLACK;
+                color = Color.GREEN;
                 break;
             }
             case 64: {
