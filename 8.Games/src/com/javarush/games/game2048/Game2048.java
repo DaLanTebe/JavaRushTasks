@@ -1,7 +1,7 @@
 package com.javarush.games.game2048;
 
 import com.javarush.engine.cell.Color;
-import com.javarush.engine.cell.Game;
+import com.javarush.engine.cell.*;
 
 public class Game2048 extends Game {
 
@@ -69,6 +69,24 @@ public class Game2048 extends Game {
         }
         return flag;
     }
+
+    @Override
+    public void onKeyPress(Key key) {
+        if(key == Key.UP){
+            moveUp();
+        } else if (key == Key.DOWN) {
+            moveDown();
+        }else if (key == Key.LEFT) {
+            moveLeft();
+        }else if (key == Key.RIGHT) {
+            moveRight();
+        }
+    }
+
+    private void moveUp(){}
+    private void moveRight(){}
+    private void moveDown(){}
+    private void moveLeft(){}
 
     private void setCellColoredNumber(int x, int y, int value) {
         String str = value > 0 ? "" + value : "";
