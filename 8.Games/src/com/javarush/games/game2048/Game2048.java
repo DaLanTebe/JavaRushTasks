@@ -7,6 +7,7 @@ public class Game2048 extends Game {
 
     private static final int SIDE = 4;
     private int[][] gameField = new int[SIDE][SIDE];
+    private boolean isGameStopped = false;
 
     @Override
     public void initialize() {
@@ -20,7 +21,16 @@ public class Game2048 extends Game {
         createNewNumber();
     }
 
+    private void win(){
+            showMessageDialog(Color.ANTIQUEWHITE, "Вы выиграли", Color.GREEN, 15);
+            isGameStopped = true;
+    }
+
     private void createNewNumber() {
+
+        if (getMaxTileValue() == 2048){
+            win();
+        }
 
         boolean isCreated = false;
         do {
@@ -87,6 +97,7 @@ public class Game2048 extends Game {
         }
     }
 
+
     private void moveUp() {
     rotateClockwise();
     rotateClockwise();
@@ -141,6 +152,18 @@ public class Game2048 extends Game {
     private void setCellColoredNumber(int x, int y, int value) {
         String str = value > 0 ? "" + value : "";
         setCellValueEx(x, y, getColorByValue(value), str);
+    }
+
+    private int getMaxTileValue(){
+        int max = 0;
+        for (int i = 0; i < SIDE; i++) {
+            for (int j = 0; j < SIDE; j++) {
+                if (max < gameField[i][j]){
+                    max = gameField[i][j];
+                }
+            }
+        }
+        return max;
     }
 
     private Color getColorByValue(int value) {
