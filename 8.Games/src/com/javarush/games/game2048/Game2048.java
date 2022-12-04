@@ -17,21 +17,26 @@ public class Game2048 extends Game {
     }
 
     private void createGame() {
+        gameField = new int[SIDE][SIDE];
         createNewNumber();
         createNewNumber();
     }
 
-    private void win(){
-            showMessageDialog(Color.ANTIQUEWHITE, "Вы выиграли", Color.GREEN, 15);
-            isGameStopped = true;
+    private void win() {
+        showMessageDialog(Color.ANTIQUEWHITE, "Вы выиграли", Color.GREEN, 15);
+        isGameStopped = true;
     }
 
-    private void gameOver(){
+    private void gameOver() {
         showMessageDialog(Color.ANTIQUEWHITE, "Вы проиграли", Color.RED, 15);
         isGameStopped = true;
     }
 
-    private boolean canUserMove(){
+    private boolean canUserMove() {
+        if (isGameStopped){
+
+        }
+
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
                 if (gameField[i][j] == 0) {
@@ -48,7 +53,7 @@ public class Game2048 extends Game {
 
     private void createNewNumber() {
 
-        if (getMaxTileValue() == 2048){
+        if (getMaxTileValue() == 2048) {
             win();
         }
 
@@ -103,7 +108,15 @@ public class Game2048 extends Game {
     @Override
     public void onKeyPress(Key key) {
 
-        if (!canUserMove()){
+        if (isGameStopped){
+            if (key == Key.SPACE){
+                isGameStopped = false;
+                createGame();
+                drawScene();
+            } else return;
+        }
+
+        if (!canUserMove()) {
             gameOver();
             return;
         }
@@ -125,11 +138,11 @@ public class Game2048 extends Game {
 
 
     private void moveUp() {
-    rotateClockwise();
-    rotateClockwise();
-    rotateClockwise();
-    moveLeft();
-    rotateClockwise();
+        rotateClockwise();
+        rotateClockwise();
+        rotateClockwise();
+        moveLeft();
+        rotateClockwise();
     }
 
     private void moveRight() {
@@ -180,11 +193,11 @@ public class Game2048 extends Game {
         setCellValueEx(x, y, getColorByValue(value), str);
     }
 
-    private int getMaxTileValue(){
+    private int getMaxTileValue() {
         int max = 0;
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                if (max < gameField[i][j]){
+                if (max < gameField[i][j]) {
                     max = gameField[i][j];
                 }
             }
