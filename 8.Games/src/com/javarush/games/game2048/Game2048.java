@@ -5,7 +5,7 @@ import com.javarush.engine.cell.*;
 
 public class Game2048 extends Game {
 
-    private static final int SIDE = 4;
+    private static final int SIDE = 6;
     private int[][] gameField = new int[SIDE][SIDE];
     private boolean isGameStopped = false;
     private int score;
@@ -24,12 +24,12 @@ public class Game2048 extends Game {
     }
 
     private void win() {
-        showMessageDialog(Color.ANTIQUEWHITE, "Вы выиграли", Color.GREEN, 15);
+        showMessageDialog(Color.ANTIQUEWHITE, "А ты не плох, чувачок", Color.GREEN, 50);
         isGameStopped = true;
     }
 
     private void gameOver() {
-        showMessageDialog(Color.ANTIQUEWHITE, "Вы проиграли", Color.RED, 15);
+        showMessageDialog(Color.ANTIQUEWHITE, "Повезет в следующей жизни", Color.RED, 50);
         isGameStopped = true;
     }
 
@@ -68,8 +68,8 @@ public class Game2048 extends Game {
     }
 
     private void drawScene() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < SIDE; i++) {
+            for (int j = 0; j < SIDE; j++) {
                 setCellColoredNumber(i, j, gameField[j][i]);
             }
         }
@@ -231,7 +231,7 @@ public class Game2048 extends Game {
                 break;
             }
             case 32: {
-                color = Color.GREEN;
+                color = Color.DEEPPINK;
                 break;
             }
             case 64: {
