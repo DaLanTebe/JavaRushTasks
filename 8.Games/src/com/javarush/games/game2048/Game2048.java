@@ -74,19 +74,38 @@ public class Game2048 extends Game {
     public void onKeyPress(Key key) {
         if(key == Key.UP){
             moveUp();
+            drawScene();
         } else if (key == Key.DOWN) {
             moveDown();
+            drawScene();
         }else if (key == Key.LEFT) {
             moveLeft();
+            drawScene();
         }else if (key == Key.RIGHT) {
             moveRight();
+            drawScene();
         }
     }
 
     private void moveUp(){}
     private void moveRight(){}
     private void moveDown(){}
-    private void moveLeft(){}
+    private void moveLeft(){
+        boolean isNewNumberNeeded = false;
+        for (int[] row : gameField) {
+            boolean wasCompressed = compressRow(row);
+            boolean wasMerged = mergeRow(row);
+            if (wasMerged) {
+                compressRow(row);
+            }
+            if (wasCompressed || wasMerged) {
+                isNewNumberNeeded = true;
+            }
+        }
+        if (isNewNumberNeeded) {
+            createNewNumber();
+        }
+    }
 
     private void setCellColoredNumber(int x, int y, int value) {
         String str = value > 0 ? "" + value : "";
