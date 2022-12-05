@@ -2,6 +2,8 @@ package com.javarush.games.snake;
 
 import com.javarush.engine.cell.*;
 
+import static com.javarush.engine.cell.Key.*;
+
 public class SnakeGame extends Game {
 
     public static final int WIDTH = 15;
@@ -37,5 +39,25 @@ public class SnakeGame extends Game {
     public void onTurn(int step) {
         snake.move();
         drawScene();
+    }
+
+    @Override
+    public void onKeyPress(Key key) {
+        Direction direction = null;
+        switch (key){
+            case DOWN : { direction = Direction.DOWN;
+                break;
+            }
+            case UP : { direction = Direction.UP;
+                break;
+            }
+            case RIGHT : { direction = Direction.RIGHT;
+                break;
+            }
+            case LEFT : { direction = Direction.LEFT;
+                break;
+            }
+        }
+        snake.setDirection(direction);
     }
 }
