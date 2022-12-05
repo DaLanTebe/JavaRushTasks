@@ -12,6 +12,11 @@ public class Snake {
     private static final String HEAD_SIGN = "\uD83D\uDC7E";
     private static final String BODY_SIGN = "\u26AB";
     private List<GameObject> snakeParts = new ArrayList<>();
+
+    public int getLength() {
+        return snakeParts.size();
+    }
+
     public boolean isAlive = true;
     private Direction direction = LEFT;
 
