@@ -57,6 +57,10 @@ public class Snake {
             isAlive = false;
             return;
         }
+        if (checkCollision(newHead)){
+            isAlive = false;
+            return;
+        }
         snakeParts.add(0, newHead);
         if (snakeParts.get(0).x == apple.x && snakeParts.get(0).y == apple.y){
             apple.isAlive = false;
@@ -89,5 +93,13 @@ public class Snake {
 
     public void removeTail() {
         snakeParts.remove(snakeParts.size() - 1);
+    }
+    public boolean checkCollision(GameObject object){
+        for (GameObject snakePart : snakeParts) {
+            if (snakePart.y == object.y && snakePart.x == object.x){
+                return true;
+            }
+        }
+        return false;
     }
 }
