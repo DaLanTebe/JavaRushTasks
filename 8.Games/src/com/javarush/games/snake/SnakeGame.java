@@ -11,6 +11,7 @@ public class SnakeGame extends Game {
     private Snake snake;
     private int turnDelay;
     private Apple apple;
+    private boolean isGameStopped;
 
 
     @Override
@@ -20,6 +21,7 @@ public class SnakeGame extends Game {
     }
 
     private void createGame() {
+        isGameStopped = false;
         turnDelay = 300;
         setTurnTimer(turnDelay);
         snake = new Snake(WIDTH / 2, HEIGHT / 2);
@@ -31,7 +33,7 @@ public class SnakeGame extends Game {
     private void drawScene() {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                setCellValueEx(i, j, Color.ANTIQUEWHITE,"");
+                setCellValueEx(i, j, Color.ANTIQUEWHITE, "");
             }
         }
         snake.draw(this);
@@ -41,8 +43,11 @@ public class SnakeGame extends Game {
     @Override
     public void onTurn(int step) {
         snake.move(apple);
-        if (!apple.isAlive){
+        if (!apple.isAlive) {
             createNewApple();
+        }
+        if (!snake.isAlive){
+            gameOver();
         }
         drawScene();
     }
@@ -50,23 +55,34 @@ public class SnakeGame extends Game {
     @Override
     public void onKeyPress(Key key) {
         Direction direction = null;
-        switch (key){
-            case DOWN : { direction = Direction.DOWN;
+        switch (key) {
+            case DOWN: {
+                direction = Direction.DOWN;
                 break;
             }
-            case UP : { direction = Direction.UP;
+            case UP: {
+                direction = Direction.UP;
                 break;
             }
-            case RIGHT : { direction = Direction.RIGHT;
+            case RIGHT: {
+                direction = Direction.RIGHT;
                 break;
             }
-            case LEFT : { direction = Direction.LEFT;
+            case LEFT: {
+                direction = Direction.LEFT;
                 break;
             }
         }
         snake.setDirection(direction);
     }
-    private void createNewApple(){
+
+    private void createNewApple() {
         apple = new Apple(getRandomNumber(WIDTH), getRandomNumber(HEIGHT));
+    }
+
+    private void gameOver() {
+        stopTurnTimer();
+        isGameStopped = true;
+        showMessageDialog(Color.RED, "GAME OVER", Color.BLUE, 70);
     }
 }
