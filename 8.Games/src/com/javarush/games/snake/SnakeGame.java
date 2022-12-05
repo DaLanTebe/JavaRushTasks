@@ -58,30 +58,54 @@ public class SnakeGame extends Game {
 
     @Override
     public void onKeyPress(Key key) {
-        Direction direction = null;
-        switch (key) {
-            case DOWN: {
-                direction = Direction.DOWN;
-                break;
-            }
-            case UP: {
-                direction = Direction.UP;
-                break;
-            }
-            case RIGHT: {
-                direction = Direction.RIGHT;
-                break;
-            }
-            case LEFT: {
-                direction = Direction.LEFT;
-                break;
-            }
+
+        if (key == Key.SPACE && isGameStopped) {
+            createGame();
         }
-        snake.setDirection(direction);
+
+        if (key == Key.LEFT) {
+            snake.setDirection(Direction.LEFT);
+        } else if (key == Key.RIGHT) {
+            snake.setDirection(Direction.RIGHT);
+        } else if (key == Key.UP) {
+            snake.setDirection(Direction.UP);
+        } else if (key == Key.DOWN) {
+            snake.setDirection(Direction.DOWN);
+        }
+
+//        if (key == Key.SPACE && isGameStopped) {
+//            createGame();
+//        }
+//        Direction direction = null;
+//        switch (key) {
+//            case DOWN: {
+//                direction = Direction.DOWN;
+//                break;
+//            }
+//            case UP: {
+//                direction = Direction.UP;
+//                break;
+//            }
+//            case RIGHT: {
+//                direction = Direction.RIGHT;
+//                break;
+//            }
+//            case LEFT: {
+//                direction = Direction.LEFT;
+//                break;
+//            }
+//        }
+//        snake.setDirection(direction);
     }
 
     private void createNewApple() {
-        apple = new Apple(getRandomNumber(WIDTH), getRandomNumber(HEIGHT));
+        Apple newApple;
+        do {
+            int x = getRandomNumber(WIDTH);
+            int y = getRandomNumber(HEIGHT);
+            newApple = new Apple(x, y);
+        } while (snake.checkCollision(newApple));
+        apple = newApple;
     }
 
     private void gameOver() {
