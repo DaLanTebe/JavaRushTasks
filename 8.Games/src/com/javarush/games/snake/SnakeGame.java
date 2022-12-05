@@ -63,39 +63,29 @@ public class SnakeGame extends Game {
             createGame();
         }
 
-        if (key == Key.LEFT) {
-            snake.setDirection(Direction.LEFT);
-        } else if (key == Key.RIGHT) {
-            snake.setDirection(Direction.RIGHT);
-        } else if (key == Key.UP) {
-            snake.setDirection(Direction.UP);
-        } else if (key == Key.DOWN) {
-            snake.setDirection(Direction.DOWN);
+        if (key == Key.SPACE && isGameStopped) {
+            createGame();
         }
-
-//        if (key == Key.SPACE && isGameStopped) {
-//            createGame();
-//        }
-//        Direction direction = null;
-//        switch (key) {
-//            case DOWN: {
-//                direction = Direction.DOWN;
-//                break;
-//            }
-//            case UP: {
-//                direction = Direction.UP;
-//                break;
-//            }
-//            case RIGHT: {
-//                direction = Direction.RIGHT;
-//                break;
-//            }
-//            case LEFT: {
-//                direction = Direction.LEFT;
-//                break;
-//            }
-//        }
-//        snake.setDirection(direction);
+        Direction direction = null;
+        switch (key) {
+            case DOWN : {
+                direction = Direction.DOWN;
+                    break;
+            }
+            case UP : {
+                direction = Direction.UP;
+                break;
+            }
+            case RIGHT : {
+                direction = Direction.RIGHT;
+                break;
+            }
+            case LEFT : {
+                direction = Direction.LEFT;
+                break;
+            }
+        }
+        snake.setDirection(direction);
     }
 
     private void createNewApple() {
