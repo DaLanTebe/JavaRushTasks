@@ -10,7 +10,7 @@ public class SnakeGame extends Game {
     private int turnDelay;
     private Apple apple;
     private boolean isGameStopped;
-    private static final int GOAL = 28;
+    private static final int GOAL = 24;
     private int score;
 
 
