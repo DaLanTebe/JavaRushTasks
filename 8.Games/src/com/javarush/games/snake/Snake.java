@@ -9,8 +9,8 @@ import static com.javarush.games.snake.Direction.*;
 
 public class Snake {
 
-    private static final String HEAD_SIGN = "\uD83D\uDC7E";
-    private static final String BODY_SIGN = "\u26AB";
+    private static final String HEAD_SIGN = "\uD83D\uDE49";
+    private static final String BODY_SIGN = "\uD83D\uDE48";
     private List<GameObject> snakeParts = new ArrayList<>();
 
     public int getLength() {
@@ -54,7 +54,7 @@ public class Snake {
         for (int i = 0; i < snakeParts.size(); i++) {
             String sign = i == 0 ? HEAD_SIGN : BODY_SIGN;
             if (isAlive) {
-                game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, sign, Color.DARKGREEN, 75);
+                game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, sign, Color.BROWN, 75);
             } else game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, sign, Color.RED, 75);
         }
     }

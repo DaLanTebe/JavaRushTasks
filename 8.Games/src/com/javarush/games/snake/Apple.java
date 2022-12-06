@@ -5,7 +5,7 @@ import com.javarush.engine.cell.*;
 
 public class Apple extends GameObject{
 
-    private static final String APPLE_SIGN = "\uD83C\uDF4E";
+    private static final String APPLE_SIGN = "\uD83C\uDF4C";
     public boolean isAlive = true;
 
     public Apple(int x, int y) {
@@ -13,7 +13,7 @@ public class Apple extends GameObject{
     }
 
         public void draw (Game game){
-        game.setCellValueEx(x,y, Color.NONE, APPLE_SIGN, Color.GREEN, 75);
+        game.setCellValueEx(x,y, Color.NONE, APPLE_SIGN, Color.YELLOW, 75);
         }
 
 

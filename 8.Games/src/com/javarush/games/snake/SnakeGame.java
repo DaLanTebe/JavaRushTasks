@@ -2,8 +2,6 @@ package com.javarush.games.snake;
 
 import com.javarush.engine.cell.*;
 
-import static com.javarush.engine.cell.Key.*;
-
 public class SnakeGame extends Game {
 
     public static final int WIDTH = 15;
@@ -37,7 +35,7 @@ public class SnakeGame extends Game {
     private void drawScene() {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                setCellValueEx(i, j, Color.ANTIQUEWHITE, "");
+                setCellValueEx(i, j, Color.LIGHTGRAY, "");
             }
         }
         snake.draw(this);
