@@ -15,7 +15,7 @@ public class Solution {
         FileInputStream inputStream = new FileInputStream(console.readLine())){
             int count = 0;
             while (inputStream.available() > 0){
-                if (inputStream.read() == 44){
+                if ((char)inputStream.read() == ','){
                     count++;
                 }
             }
