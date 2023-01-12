@@ -11,6 +11,14 @@ public class Solution {
     public static TestString testString = new TestString();
 
     public static void main(String[] args) {
+        PrintStream consoleStream = System.out;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream stream = new PrintStream(byteArrayOutputStream);
+        System.setOut(stream);
+        testString.printSomething();
+        String replaceAll = byteArrayOutputStream.toString().replaceAll("\\D", "");
+        System.setOut(consoleStream);
+        System.out.println(replaceAll);
     }
 
     public static class TestString {
