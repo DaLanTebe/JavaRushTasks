@@ -15,21 +15,6 @@ import java.util.Map;
 public class Solution {
     public static Map<Integer, String> map = new HashMap<Integer, String>();
 
-//    static {
-//        map.put(1,"один");
-//        map.put(2,"два");
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//        map.put(,);
-//    }
-
     public static void main(String[] args) {
 
     }
