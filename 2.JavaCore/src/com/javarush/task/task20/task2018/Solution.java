@@ -6,8 +6,10 @@ import java.io.*;
 Найти ошибки
 */
 
-public class Solution {
+public class Solution implements Serializable{
     public static class A {
+
+        public A(){}
 
         protected String nameA = "A";
 
@@ -24,6 +26,17 @@ public class Solution {
             super(nameA);
             this.nameA += nameA;
             this.nameB = nameB;
+        }
+
+        private void writeObject(ObjectOutputStream out) throws IOException {
+            out.defaultWriteObject();
+            out.writeObject(nameA);
+            out.writeObject(nameB);
+        }
+        private void readObject (ObjectInputStream in) throws IOException, ClassNotFoundException {
+            in.defaultReadObject();
+            nameA = (String) in.readObject();
+            nameB = (String) in.readObject();
         }
     }
 
