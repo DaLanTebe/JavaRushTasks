@@ -11,13 +11,15 @@ public class Hippodrome {
         horses = list;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ArrayList<Horse> horses = new ArrayList<>();
         horses.add(new Horse("Сивка", 3, 0));
         horses.add(new Horse("Плотва", 3, 0));
         horses.add(new Horse("Вася", 3, 0));
 
         game = new Hippodrome(horses);
+
+        game.run();
 
     }
 
