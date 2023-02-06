@@ -1,7 +1,17 @@
 package com.javarush.task.task21.task2113;
 
-public class Hippodrome {
-    public static void main(String[] args) {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Hippodrome {
+
+    private List<Horse> horses = new ArrayList<>();
+
+    public static void main(String[] args) {
+        
+    }
+
+    public List<Horse> getHorses() {
+        return horses;
     }
 }
