@@ -42,6 +42,7 @@ public class Hippodrome {
     public void print(){
         for (Horse horse : horses) {
             horse.print();
+            System.out.println();
         }
         System.out.println();
         System.out.println();
@@ -53,5 +54,17 @@ public class Hippodrome {
         System.out.println();
         System.out.println();
         System.out.println();
+    }
+    public Horse getWinner(){
+        Horse winner = horses.get(0);
+        for (Horse horse : horses) {
+            if (winner.getDistance() < horse.getDistance()){
+                winner = horse;
+            }
+        }
+        return winner;
+    }
+    public void printWinner(){
+        System.out.println("Winner is " + getWinner().getName() +"!");
     }
 }
