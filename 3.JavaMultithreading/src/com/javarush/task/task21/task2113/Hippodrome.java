@@ -7,6 +7,10 @@ public class Hippodrome {
 
     private List<Horse> horses = new ArrayList<>();
 
+    public Hippodrome (List<Horse> list) {
+        horses = list;
+    }
+
     public static void main(String[] args) {
         
     }
