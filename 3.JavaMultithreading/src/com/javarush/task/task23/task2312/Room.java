@@ -1,6 +1,7 @@
 package com.javarush.task.task23.task2312;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class Room {
     private int width;
@@ -89,6 +90,24 @@ public class Room {
     }
 
     public void print() {
+        String[][] field = new String[height][width];
+        List<SnakeSection> sections = snake.getSections();
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                field[i][j] = ".";
+                field[sections.get(0).getY()][sections.get(0).getX()] = "X";
+                for (int k = 1; k < sections.size(); k++) {
+                    field[sections.get(k).getY()][sections.get(k).getX()] = "x";
+                }
+                field[mouse.getY()][mouse.getX()] = "^";
+            }
+        }
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                System.out.print(field[i][j]);
+            }
+            System.out.println();
+        }
         //Создаем массив, куда будем "рисовать" текущее состояние игры
         //Рисуем все кусочки змеи
         //Рисуем мышь
