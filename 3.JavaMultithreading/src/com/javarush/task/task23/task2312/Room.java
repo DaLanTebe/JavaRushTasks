@@ -151,7 +151,6 @@ public class Room {
         game.run();
     }
 
-
     private int initialDelay = 520;
     private int delayStep = 20;
 
@@ -166,5 +165,4 @@ public class Room {
         } catch (InterruptedException e) {
         }
     }
-
 }
