@@ -1,5 +1,6 @@
 package com.javarush.task.task22.task2208;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -9,24 +10,24 @@ import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        map.put("name", "Ivanov");
-        map.put("country", "Ukraine");
-        map.put("city", "Kiev");
-        map.put("age", null);
-        System.out.println(getQuery(map));
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("name", null);
+        hashMap.put("country", null);
+        hashMap.put("age", null);
+        System.out.println(getQuery(hashMap));
     }
 
     public static String getQuery(Map<String, String> params) {
-        StringBuilder builder = new StringBuilder();
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            if (entry.getValue() != null) {
-                builder.append(entry.getKey())
-                        .append(" = '")
-                        .append(entry.getValue())
-                        .append("' and ");
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String s : params.keySet()) {
+            if (params.get(s) != null){
+                stringBuilder.append(s).append(" = '").append(params.get(s)).append("' ").append("and ");
             }
         }
-        return builder.substring(0, builder.lastIndexOf("'") + 1);
+        if (stringBuilder.length() != 0){
+            stringBuilder.replace(stringBuilder.lastIndexOf("and"), stringBuilder.length(), "");
+        }
+        return stringBuilder.toString().trim();
     }
 }
