@@ -6,10 +6,34 @@ package com.javarush.task.task22.task2212;
 
 public class Solution {
     public static boolean checkTelNumber(String telNumber) {
-        return false;
+//        return telNumber.matches("^(\\+)\\d\\d[(]\\d{3}[)]\\d{7}$") || telNumber.matches("^[(]\\d{3}[)]\\d{7}$") ||
+//        telNumber.matches("^(\\+)\\d{12}$") || telNumber.matches("^\\d[(]\\d{3}[)]\\d{6}$");
+        if (telNumber == null) {
+            return false;
+        }
+//        if (telNumber.matches("^\\+\\d{12}$")) {
+//            return true;
+//        } else if (telNumber.matches("^\\+\\d{2}\\(\\d{3}\\)\\d{7}$")) {
+//            return true;
+//        } else if (telNumber.matches("^\\+\\d{1,8}?\\(\\d{3}\\)\\d{1,8}?$")) {
+//            return true;
+//        } else if (telNumber.matches("^\\(\\d{3}\\)\\d{7}$")) {
+//            return true;
+//        } else if (telNumber.matches("^\\d{1,6}?\\(\\d{3}\\)\\d{1,6}?$")) {
+//            return true;
+//        } else if (telNumber.matches("^(\\d)?\\(\\d{3}\\)\\d{6,7}$")) {
+//            return true;
+//        } else return false;
+
+        boolean match1 = telNumber.matches("^\\+(\\d[()]?){12}$");
+        boolean match2 = telNumber.matches("^([()]?\\d){10}$");
+        boolean match3 = telNumber.matches("^(\\+)?(\\d+)?(\\(\\d{3}\\))?\\d+$");
+        return (match1 || match2 ) && match3;
+
     }
 
     public static void main(String[] args) {
+        System.out.println(checkTelNumber("050ххх4567"));
         System.out.println("+380501234567 - true = " + checkTelNumber("+380501234567"));
         System.out.println("+3805012345673 - false = " + checkTelNumber("+3805012345673"));
         System.out.println("+38050123456 - false = " + checkTelNumber("+38050123456"));
@@ -27,6 +51,7 @@ public class Solution {
         System.out.println("+123(456)789012 - true = " + checkTelNumber("+123(456)789012"));
         System.out.println("+123456(789)012 - true = " + checkTelNumber("+123456(789)012"));
         System.out.println("+123456789(456) - false = " + checkTelNumber("+123456789(456)"));
+        System.out.println("+1(234)56789012 - true = " + checkTelNumber("+1(234)56789012"));
         System.out.println("Проверка на пустую строку \"\" - false = " + checkTelNumber(""));
         System.out.println("Проверка на null - false =  " + checkTelNumber(null));
     }
