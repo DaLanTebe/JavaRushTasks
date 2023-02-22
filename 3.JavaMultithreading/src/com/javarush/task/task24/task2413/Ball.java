@@ -41,6 +41,9 @@ public class Ball extends BaseObject {
 
     public void setDirection(double direction) {
         this.direction = direction;
+        double radians = Math.toRadians(direction);
+        dx = Math.cos(radians) * speed;
+        dy = -Math.sin(radians) * speed;
     }
 
     public void setDx(double dx) {
@@ -66,5 +69,9 @@ public class Ball extends BaseObject {
 
     public void start(){
         isFrozen = false;
+    }
+
+    public void checkRebound (int minx, int maxx, int miny, int maxy){
+
     }
 }
