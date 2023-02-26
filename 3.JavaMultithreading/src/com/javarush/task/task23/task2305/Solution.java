@@ -14,14 +14,15 @@ public class Solution {
         Solution[] solutions = new Solution[2];
         Solution solution1 = new Solution();
         Solution solution2 = new Solution();
-        solution1.innerClasses[0] = new Solution.InnerClass();
-        solution2.innerClasses[1] = new Solution.InnerClass();
+        solution1.innerClasses[0] = new InnerClass();
+        solution1.innerClasses[1] = new InnerClass();
+        solution2.innerClasses[0] = new InnerClass();
+        solution2.innerClasses[1] = new InnerClass();
         solutions[0] = solution1;
         solutions[1] = solution2;
         return solutions;
     }
 
     public static void main(String[] args) {
-
     }
 }
