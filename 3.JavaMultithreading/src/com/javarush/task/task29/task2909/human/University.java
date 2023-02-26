@@ -39,12 +39,11 @@ public class University{
         this.students = students;
     }
 
-    public Student getStudentWithAverageGrade() {
-        //TODO:
-        return null;
+    public Student getStudentWithAverageGrade(double averageGrade) {
+        return students.stream().filter(student -> student.getAverageGrade() == averageGrade).findFirst().get();
     }
 
-    public Student getStudentWithMaxAverageGrade(double averageGrade) {
+    public Student getStudentWithMaxAverageGrade() {
         //TODO:
         return null;
     }
