@@ -19,12 +19,14 @@ public class Student extends UniversityPerson {
         learn();
     }
 
+    @Override
+    public String getPosition() {
+        return "Студент";
+    }
+
     public void learn() {
     }
 
-    public void printData() {
-        System.out.println("Студент: " + name);
-    }
 
     public void incAverageGradeBy01() {
         averageGrade += 0.1;
