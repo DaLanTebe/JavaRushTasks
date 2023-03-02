@@ -18,7 +18,7 @@ public class Car {
     private boolean driverAvailable;
     private int numberOfPassengers;
 
-    public Car(int type, int numberOfPassengers) {
+    protected Car(int type, int numberOfPassengers) {
         this.type = type;
         this.numberOfPassengers = numberOfPassengers;
     }
@@ -28,6 +28,17 @@ public class Car {
             return -1;
         fuel += numberOfLiters;
         return 0;
+    }
+
+    public static Car create(int type, int numberOfPassengers){
+        if (type == TRUCK){
+            return new Truck(numberOfPassengers);
+        } else if (type == SEDAN) {
+            return new Sedan(numberOfPassengers);
+        } else if (type == CABRIOLET) {
+            return new Cabriolet(numberOfPassengers);
+        }else
+        return null;
     }
 
     public double getTripConsumption(Date date, int length, Date SummerStart, Date SummerEnd) {
