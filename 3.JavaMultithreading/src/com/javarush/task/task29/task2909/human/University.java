@@ -1,6 +1,7 @@
 package com.javarush.task.task29.task2909.human;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class University{
@@ -44,11 +45,13 @@ public class University{
     }
 
     public Student getStudentWithMaxAverageGrade() {
-        //TODO:
-        return null;
+        return students.stream().max(Comparator.comparingDouble(Student::getAverageGrade)).get();
     }
 
-    public void getStudentWithMinAverageGradeAndExpel() {
-        //TODO:
+    public Student getStudentWithMinAverageGrade() {
+        return students.stream().min(Comparator.comparingDouble(Student::getAverageGrade)).get();
+    }
+    public void expel(Student student){
+    students.removeIf(student::equals);
     }
 }
