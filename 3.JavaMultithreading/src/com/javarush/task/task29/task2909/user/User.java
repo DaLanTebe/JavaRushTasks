@@ -68,4 +68,15 @@ public class User {
     public void setWork(Work work) {
         this.work = work;
     }
+
+    public void printInfo() {
+//        System.out.printf("Имя: %s %nФамилия: %s", name, surname);
+        System.out.println("Имя: " + name);
+        System.out.println("Фамилия: " + surname);
+    }
+
+    public void printAdditionalInfo() {
+//        System.out.printf("Пользователь %s 16 лет%n", getAge() < 16 ? "моложе" : "старше");
+        System.out.println(getAge() < 16? "Пользователь моложе 16 лет": "Пользователь старше 16 лет");
+    }
 }
