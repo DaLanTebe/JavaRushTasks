@@ -9,22 +9,28 @@ public class Solution implements Action {
 
     private int param;
 
+    @Override
+    public void someAction() {
+        solutionAction.someAction();
+    }
+
     private Action solutionAction = new Action() {
-        //напишите тут ваш код
+        FirstClass firstClass = new FirstClass();
+        SecondClass secondClass = new SecondClass();
 
         public void someAction() {
-            //напишите тут ваш код
+            if (param > 0) {
+                firstClass.someAction();
+            } else {
+                secondClass.someAction();
+                System.out.println(secondClass.SPECIFIC_ACTION_FOR_ANONYMOUS_SECOND_CLASS_PARAM + param);
+            }
         }
     };
 
 
     public Solution(int param) {
         this.param = param;
-    }
-
-    @Override
-    public void someAction() {
-        solutionAction.someAction();
     }
 
     /**
