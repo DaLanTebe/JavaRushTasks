@@ -30,19 +30,22 @@ public class Cat implements Pet {
      * @return экземпляр класса CatPet
      */
     public Sayable toSayable(final int i) {
-        class CatPet implements Sayable{
+        class CatPet implements Sayable {
             @Override
             public String say() {
-                if (i < 1){
-                   return String.format("%s спит.", name);
-                }else {
-                    StringBuilder builder = new StringBuilder();
-                    for (int j = 0; j < i; j++) {
-                        builder.append("я");
-                    }
-                    return name + " говорит м" + builder + "у!";
-                }
+                return i < 1 ? name + " спит." : name + " говорит м" +
+                        new String(new char[i]).replace("\0", "я") + "у!";
             }
+//            public String say() {
+//                if (i < 1){
+//                   return String.format("%s спит.", name);
+//                }else {
+//                    StringBuilder builder = new StringBuilder();
+//                    for (int j = 0; j < i; j++) {
+//                        builder.append("я");
+//                    }
+//                    return name + " говорит м" + builder + "у!";
+//                }
         }
         return new CatPet();
     }
