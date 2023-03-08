@@ -1,6 +1,6 @@
 package com.javarush.task.task24.task2405;
 
-public class FirstClass implements Action {     //first implementation
+public abstract class FirstClass implements Action {     //first implementation
 
     protected FirstClass() {
         Solution.countActionObjects++;
@@ -10,4 +10,5 @@ public class FirstClass implements Action {     //first implementation
         System.out.println("class FirstClass, method someAction");
     }
 
+    public abstract Action getDependantAction();
 }

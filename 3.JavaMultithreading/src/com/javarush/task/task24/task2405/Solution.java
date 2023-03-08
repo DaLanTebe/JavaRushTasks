@@ -9,28 +9,43 @@ public class Solution implements Action {
 
     private int param;
 
-    @Override
-    public void someAction() {
-        solutionAction.someAction();
+    public Solution(int param) {
+        this.param = param;
     }
 
     private Action solutionAction = new Action() {
-        FirstClass firstClass = new FirstClass();
-        SecondClass secondClass = new SecondClass();
 
         public void someAction() {
-            if (param > 0) {
-                firstClass.someAction();
-            } else {
+            if (param > 0){
+                FirstClass firstClass = new FirstClass() {
+                    @Override
+                    public Action getDependantAction() {
+                        while (param > 0){
+                            System.out.println(param--);
+                        }
+                        super.someAction();
+                        Solution.this.someAction();
+                        return this;
+                    }
+                };
+                firstClass.getDependantAction();
+            }else {
+                SecondClass secondClass = new SecondClass(){
+                    @Override
+                    public void someAction() {
+                        sb.append(SPECIFIC_ACTION_FOR_ANONYMOUS_SECOND_CLASS_PARAM). append(param);
+                        super.someAction();
+                    }
+                };
                 secondClass.someAction();
-                System.out.println(secondClass.SPECIFIC_ACTION_FOR_ANONYMOUS_SECOND_CLASS_PARAM + param);
             }
         }
     };
 
 
-    public Solution(int param) {
-        this.param = param;
+    @Override
+    public void someAction() {
+        solutionAction.someAction();
     }
 
     /**
