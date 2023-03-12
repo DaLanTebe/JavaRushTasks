@@ -44,6 +44,8 @@ public class Solution {
     public static void sort(List<Stock> list) {
         list.sort(new Comparator<Stock>() {
             public int compare(Stock stock1, Stock stock2) {
+                for (Stock stock : list) {
+                }
                 return 0;
             }
         });
