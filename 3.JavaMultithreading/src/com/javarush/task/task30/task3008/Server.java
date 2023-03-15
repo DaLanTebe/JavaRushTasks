@@ -11,7 +11,7 @@ public class Server {
 
     private static final Map<String, Connection> connectionMap = new ConcurrentHashMap<>();
 
-    public static void sendBroadcastMessage(Message message){
+    public static void sendBroadcastMessage(Message message) {
         for (Connection connection : connectionMap.values()) {
             try {
                 connection.send(message);
@@ -20,12 +20,13 @@ public class Server {
             }
         }
     }
+
     public static void main(String[] args) {
         ConsoleHelper.writeMessage("Введите порт сервера");
         int port = ConsoleHelper.readInt();
-        try (ServerSocket serverSocket = new ServerSocket(port)){
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
             ConsoleHelper.writeMessage("Чат сервер запущен");
-            while (true){
+            while (true) {
                 Socket accept = serverSocket.accept();
                 Handler handler = new Handler(accept);
                 handler.start();
@@ -34,6 +35,7 @@ public class Server {
             ConsoleHelper.writeMessage("Произошла ошибка при запуске или работе сервера");
         }
     }
+
     private static class Handler extends Thread {
         private Socket socket;
 
@@ -45,11 +47,21 @@ public class Server {
         public void run() {
         }
 
-        private void notifyUsers(Connection connection, String userName) throws IOException{
+        private void notifyUsers(Connection connection, String userName) throws IOException {
             for (String name : connectionMap.keySet()) {
-                if (!name.equals(userName)){
+                if (!name.equals(userName)) {
                     connection.send(new Message(MessageType.USER_ADDED, name));
                 }
+            }
+        }
+
+        private void serverMainLoop(Connection connection, String userName) throws IOException, ClassNotFoundException {
+            while (true) {
+                Message message = connection.receive();
+                if (message.getType() == MessageType.TEXT) {
+                    sendBroadcastMessage(new Message(MessageType.TEXT, userName + ": " + message.getData()));
+                } else ConsoleHelper.writeMessage("Получено сообщение от " + socket.getRemoteSocketAddress()
+                        + " тип сообшение не соответвует протоколу");
             }
         }
 
