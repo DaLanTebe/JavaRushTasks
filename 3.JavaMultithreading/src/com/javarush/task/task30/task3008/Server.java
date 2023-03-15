@@ -45,6 +45,14 @@ public class Server {
         public void run() {
         }
 
+        private void notifyUsers(Connection connection, String userName) throws IOException{
+            for (String name : connectionMap.keySet()) {
+                if (!name.equals(userName)){
+                    connection.send(new Message(MessageType.USER_ADDED, name));
+                }
+            }
+        }
+
         private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException {
             while (true) {
                 connection.send(new Message(MessageType.NAME_REQUEST, "Пожалуйста введите имя пользователя"));
