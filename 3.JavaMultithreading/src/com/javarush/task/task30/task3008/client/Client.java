@@ -6,6 +6,7 @@ import com.javarush.task.task30.task3008.Message;
 import com.javarush.task.task30.task3008.MessageType;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class Client {
     private volatile boolean clientConnected = false;
@@ -113,6 +114,19 @@ public class Client {
                 } else if (message.getType() == MessageType.USER_REMOVED) {
                     informAboutDeletingNewUser(message.getData());
                 } else throw new IOException("Unexpected MessageType");
+            }
+        }
+
+        @Override
+        public void run() {
+            String serverAddress = getServerAddress();
+            int serverPort = getServerPort();
+            try (Socket socket = new Socket(serverAddress, serverPort)){
+                connection = new Connection(socket);
+                clientHandshake();
+                clientMainLoop();
+            } catch (IOException  | ClassNotFoundException exception) {
+                notifyConnectionStatusChanged(false);
             }
         }
     }
