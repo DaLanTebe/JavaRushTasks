@@ -39,7 +39,7 @@ public class BotClient extends Client {
             ConsoleHelper.writeMessage(message);
             if (message.contains(":")) {
                 String[] split = message.split(": ");
-                String format = null;
+                String format;
                 switch (split[1]) {
                     case "дата":
                         format = "d.MM.YYYY";
@@ -64,6 +64,9 @@ public class BotClient extends Client {
                         break;
                     case "секунды":
                         format = "s";
+                        break;
+                    default:
+                        format = null;
                         break;
                 }
                 if (format != null){
