@@ -26,7 +26,7 @@ public class Solution {
         String[] filepart = {"change {4}", "open {2} and last {3}"};
 
         ChoiceFormat fileform = new ChoiceFormat(filelimits, filepart);
-        Format[] testFormats = {null, dateFormat, fileform};
+        Format[] testFormats = {null, null, dateFormat, fileform};
         MessageFormat pattform = new MessageFormat("{0}   {1} | {5} {6}");
         pattform.setFormats(testFormats);
 
@@ -43,29 +43,20 @@ public class Solution {
     }
 
     public static void sort(List<Stock> list) {
-        sortByName(list);
-        sortByDate(list);
         sortByValue(list);
-    }
-    private static List<Stock> sortByName(List<Stock> list){
-        list.sort(new Comparator<Stock>() {
-            public int compare(Stock stock1, Stock stock2) {
-                return stock1.get("name").toString().compareTo(stock2.get("name").toString());
-            }
+
+        list.sort((o1, o2) -> {
+            Date date1 = (Date) o1.get("date");
+            Date date2 = (Date) o2.get("date");
+            LocalDate localDate1 = LocalDate.of(date1.getYear() + 1900, date1.getMonth() + 1, date1.getDay() == 0 ? 7 : date1.getDay());
+            LocalDate localDate2 = LocalDate.of(date2.getYear() + 1900, date2.getMonth() + 1, date2.getDay() == 0 ? 7 : date2.getDay());
+            return localDate2.compareTo(localDate1);
         });
-        return list;
+
+        list.sort(Comparator.comparing(stock -> stock.get("name").toString()));
     }
-    private static List<Stock> sortByDate(List<Stock> list){
-        list.sort(new Comparator<Stock>() {
-            @Override
-            public int compare(Stock o1, Stock o2) {
-                Date date1 = (Date) o1.get("date");
-                Date date2 = (Date) o2.get("date");
-                return date1.compareTo(date2);
-            }
-        });
-        return list;
-    }
+
+
     private static List<Stock> sortByValue(List<Stock> list){
         list.sort(new Comparator<Stock>() {
             @Override
