@@ -43,7 +43,11 @@ public class Solution {
     }
 
     public static void sort(List<Stock> list) {
-        sortByValue(list);
+        list.sort((o1, o2) -> {
+            double o1Change = o1.containsKey("change") ? (double) o1.get("change") : (double) o1.get("last") - (double) o1.get("open");
+            double o2Change = o2.containsKey("change") ? (double) o2.get("change") : (double) o2.get("last") - (double) o2.get("open");
+            return Double.compare(o2Change, o1Change);
+        });
 
         list.sort((o1, o2) -> {
             Date date1 = (Date) o1.get("date");
@@ -54,19 +58,6 @@ public class Solution {
         });
 
         list.sort(Comparator.comparing(stock -> stock.get("name").toString()));
-    }
-
-
-    private static List<Stock> sortByValue(List<Stock> list){
-        list.sort(new Comparator<Stock>() {
-            @Override
-            public int compare(Stock o1, Stock o2) {
-                if (o1.containsKey("change")){
-                    return Double.compare((double)o2.get("change") , (double) o1.get("change"));
-                }else return Double.compare((double) o2.get("last") - (double)o2.get("open"), (double) o1.get("last") - (double)o1.get("open"));
-            }
-        });
-        return list;
     }
 
     public static class Stock extends HashMap<String, Object> {
