@@ -2,8 +2,6 @@ package com.javarush.task.task31.task3110;
 
 import com.javarush.task.task31.task3110.command.ExitCommand;
 
-import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Archiver {
