@@ -38,13 +38,16 @@ public class ZipFileManager {
             ZipEntry zipEntry = new ZipEntry(fileName.toString());
             zipOutputStream.putNextEntry(zipEntry);
             copyData(inputStream, zipOutputStream);
+
             zipOutputStream.closeEntry();
         }
-
     }
-    private void copyData(InputStream in, OutputStream out) throws Exception{
-        while (in.available() > 0){
-            out.write(in.read());
+
+    private void copyData(InputStream in, OutputStream out) throws Exception {
+        byte[] buffer = new byte[8 * 1024];
+        int len;
+        while ((len = in.read(buffer)) > 0) {
+            out.write(buffer, 0, len);
         }
     }
 }
