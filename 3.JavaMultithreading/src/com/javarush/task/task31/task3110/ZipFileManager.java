@@ -55,12 +55,12 @@ public class ZipFileManager {
         try (ZipInputStream zipInputStream = new ZipInputStream(Files.newInputStream(zipFile))){
             ZipEntry nextEntry = zipInputStream.getNextEntry();
             while (nextEntry != null){
-                nextEntry = zipInputStream.getNextEntry();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 copyData(zipInputStream, stream);
 
                 FileProperties fileProperties1 = new FileProperties(nextEntry.getName(), nextEntry.getSize(), nextEntry.getCompressedSize(), nextEntry.getMethod());
                 fileProperties.add(fileProperties1);
+                nextEntry = zipInputStream.getNextEntry();
             }
         }
         return fileProperties;
