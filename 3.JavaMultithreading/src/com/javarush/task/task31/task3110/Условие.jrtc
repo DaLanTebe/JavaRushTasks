@@ -52,12 +52,18 @@ removeFile() не должен его кидать.
 
 
 Требования:
-1.	В классе ZipFileManager нужно создать публичный метод void removeFiles(List&lt;Path&gt; pathList) throws Exception.
-2.	Метод removeFiles должен бросать исключение WrongZipFileException, если файл архива не существует.
-3.	Метод removeFiles должен создавать временный файл архива с помощью метода Files.createTempFile.
-4.	Метод removeFiles должен записывать в новый архив все файлы из старого архива, кроме тех, которые в списке на удаление. Затем, заменить старый архив новым.
-5.	В классе ZipFileManager нужно создать публичный метод void removeFile(Path path) throws Exception, который будет делегировать свое выполнение методу removeFiles(List&lt;Path&gt; pathList).
-6.	Метод execute() в классе ZipRemoveCommand должен получить объект ZipFileManager и удалить из архива файл, считанный с консоли.
+1.	В классе ZipFileManager нужно создать публичный метод void
+removeFiles(List&lt;Path&gt; pathList) throws Exception.
+2.	Метод removeFiles должен бросать исключение WrongZipFileException,
+если файл архива не существует.
+3.	Метод removeFiles должен создавать временный файл архива с помощью метода
+Files.createTempFile.
+4.	Метод removeFiles должен записывать в новый архив все файлы из старого архива,
+ кроме тех, которые в списке на удаление. Затем, заменить старый архив новым.
+5.	В классе ZipFileManager нужно создать публичный метод void removeFile(Path path)
+throws Exception, который будет делегировать свое выполнение методу removeFiles(List&lt;Path&gt; pathList).
+6.	Метод execute() в классе ZipRemoveCommand должен получить объект ZipFileManager и
+удалить из архива файл, считанный с консоли.
 
 
 Archiver (16)
