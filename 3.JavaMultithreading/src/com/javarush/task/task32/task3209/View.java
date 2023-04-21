@@ -31,13 +31,10 @@ public class View extends JFrame implements ActionListener {
         addWindowListener(frameListener);
         setVisible(true);
     }
-    public void exit(){
-        controller.exit();
-    }
-
     public void initMenuBar(){
 
     }
+
     public void initEditor(){
 
     }
@@ -45,5 +42,11 @@ public class View extends JFrame implements ActionListener {
         initMenuBar();
         initEditor();
         pack();
+    }
+    public void selectedTabChanged(){
+
+    }
+    public void exit(){
+        controller.exit();
     }
 }
