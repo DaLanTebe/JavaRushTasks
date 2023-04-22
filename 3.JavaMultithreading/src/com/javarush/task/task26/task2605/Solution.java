@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Solution {
     private static ScheduledExecutorService interruptScheduledExecutor;
-    private static Thread taskThread;
-    private static RethrowableTask task;
+    private static  Thread taskThread;
+    private static  RethrowableTask task;
 
     public static void main(String[] args) throws Exception {
         runTaskBySchedule(new Runnable() {
@@ -46,7 +46,7 @@ public class Solution {
     }
 
     public static class RethrowableTask implements Runnable {
-        private Throwable throwable;
+        private volatile Throwable throwable;
         private Runnable runnable;
 
         public RethrowableTask(Runnable runnable) {
