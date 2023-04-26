@@ -24,7 +24,9 @@ redo() у представления.
 7.	Конструктор без параметров класса SubscriptAction должен вызывать конструктор суперкласса с параметром StyleConstants.Subscript.
 8.	Метод actionPerformed(ActionEvent actionEvent) класса SubscriptAction должен использовать метод setSubscript у StyleConstants с параметрами: SimpleAttributeSet и !StyleConstants.isSubscript(mutableAttributeSet).
 9.	Конструктор без параметров класса SuperscriptAction должен вызывать конструктор суперкласса с параметром StyleConstants.Superscript.
-10.	Метод actionPerformed(ActionEvent actionEvent) класса SuperscriptAction должен использовать метод setSuperscript у StyleConstants с параметрами: SimpleAttributeSet и !StyleConstants.isSuperscript(mutableAttributeSet).
+10.	Метод actionPerformed(ActionEvent actionEvent) класса SuperscriptAction
+должен использовать метод setSuperscript у StyleConstants с параметрами:
+SimpleAttributeSet и !StyleConstants.isSuperscript(mutableAttributeSet).
 
 
 HTML Editor (12)

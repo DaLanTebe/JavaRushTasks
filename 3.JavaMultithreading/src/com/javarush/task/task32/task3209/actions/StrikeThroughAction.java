@@ -18,7 +18,8 @@ public class StrikeThroughAction extends StyledEditorKit.StyledTextAction {
         if (editor != null) {
             MutableAttributeSet mutableAttributeSet = getStyledEditorKit(editor).getInputAttributes();
             SimpleAttributeSet simpleAttributeSet = new SimpleAttributeSet();
-            StyleConstants.setStrikeThrough(simpleAttributeSet, !StyleConstants.isStrikeThrough(mutableAttributeSet));
+            StyleConstants.setStrikeThrough(simpleAttributeSet,
+                    !StyleConstants.isStrikeThrough(mutableAttributeSet));
             setCharacterAttributes(editor, simpleAttributeSet, false);
         }
     }
