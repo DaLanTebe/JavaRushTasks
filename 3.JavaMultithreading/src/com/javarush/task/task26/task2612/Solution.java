@@ -11,13 +11,13 @@ public class Solution {
     private Lock lock = new ReentrantLock();
 
     public void someMethod() {
-        try {
-            if (lock.tryLock()){
+        if (lock.tryLock()) {
+            try {
                 actionIfLockIsFree();
-            }else actionIfLockIsBusy();
-        }catch (Exception e){
-            lock.unlock();
-        }
+            } finally {
+                lock.unlock();
+            }
+        }else actionIfLockIsBusy();
     }
 
     public void actionIfLockIsFree() {
