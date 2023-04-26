@@ -66,13 +66,41 @@ public class Controller {
         view.setTitle("HTML редактор");
         currentFile = null;
     }
-    public void openDocument(){}
-    public void saveDocument(){}
+    public void openDocument(){
+        view.selectHtmlTab();
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setFileFilter(new HTMLFileFilter());
+        int dialog = jFileChooser.showOpenDialog(view);
+        if (dialog == JFileChooser.APPROVE_OPTION){
+            currentFile = jFileChooser.getSelectedFile();
+            resetDocument();
+            view.setTitle(currentFile.getName());
+            try (FileReader reader = new FileReader(currentFile)){
+                HTMLEditorKit editorKit = new HTMLEditorKit();
+                editorKit.read(reader, document, 0);
+            } catch (IOException | BadLocationException e) {
+                ExceptionHandler.log(e);
+            }
+            view.resetUndo();
+        }
+    }
+    public void saveDocument(){
+        view.selectHtmlTab();
+        if (currentFile != null){
+            try (FileWriter writer = new FileWriter(currentFile)){
+                HTMLEditorKit htmlEditorKit = new HTMLEditorKit();
+                htmlEditorKit.write(writer, document, 0, document.getLength());
+            } catch (IOException | BadLocationException e) {
+                ExceptionHandler.log(e);
+            }
+        }else saveDocumentAs();
+
+    }
     public void saveDocumentAs(){
         view.selectHtmlTab();
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setFileFilter(new HTMLFileFilter());
-        int dialog = jFileChooser.showSaveDialog(view);
+        int dialog = jFileChooser.showDialog(view, "Save File");
         if (dialog == JFileChooser.APPROVE_OPTION){
             currentFile = jFileChooser.getSelectedFile();
             view.setTitle(currentFile.getName());
