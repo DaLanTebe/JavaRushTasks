@@ -12,7 +12,9 @@ public class MailServer implements Runnable {
         long startTime = System.currentTimeMillis();
         synchronized (mail){
             try {
-                mail.wait();
+                while (mail.getText() == null){
+                    mail.wait();
+                }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
