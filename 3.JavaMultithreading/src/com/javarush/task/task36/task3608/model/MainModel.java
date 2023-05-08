@@ -39,9 +39,17 @@ public class MainModel implements Model{
         modelData.setUsers(allUsers);
     }
 
+    public void changeUserData(String name, long id, int level){
+        userService.createOrUpdateUser(name, id, level);
+
+        List<User> allUsers = getAllUsers();
+        modelData.setUsers(allUsers);
+    }
+
     private List<User> getAllUsers(){
         List<User> allUsers = userService.getUsersBetweenLevels(1, 100);
         List<User> filterOnlyActiveUsers = userService.filterOnlyActiveUsers(allUsers);
         return filterOnlyActiveUsers;
     }
+
 }
