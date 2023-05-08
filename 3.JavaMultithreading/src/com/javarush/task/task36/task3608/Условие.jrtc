@@ -6,7 +6,8 @@ taskKey="com.javarush.task.task36.task3608.big04"\n\nMVC (4)
 
 1. Аналогично FakeModel создай модель MainModel.
 
-2. Т.к. Модель обращается к сервисам, то в MainModel создай поле UserService userService, инициализируй объектом.
+2. Т.к. Модель обращается к сервисам,
+то в MainModel создай поле UserService userService, инициализируй объектом.
 
 3. Реализуй логику метода loadUsers:
 3.1. Достань всех пользователей между 1 и 100 уровнями. (Метод getUsersBetweenLevels(1, 100)).
