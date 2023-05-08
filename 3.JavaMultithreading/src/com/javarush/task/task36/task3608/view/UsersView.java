@@ -10,7 +10,7 @@ public class UsersView implements View{
     private Controller controller;
     @Override
     public void refresh(ModelData modelData) {
-        System.out.println("All users:");
+        System.out.println(modelData.isDisplayDeletedUserList() ? "All deleted users:" : "All users:");
         modelData.getUsers().forEach(user -> System.out.println("\t" + user));
         System.out.println("===================================================");
     }
