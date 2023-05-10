@@ -23,16 +23,10 @@ public class Solution {
     }
 
     public static void switchTest(Enum<?> obj) {
-        switch (obj.getClass().getSimpleName()){
-            case "E1" :
-                System.out.println("it's E1." + E1.values()[obj.ordinal()]);
-                break;
-            case "E2" :
-                System.out.println("it's E2." + E2.values()[obj.ordinal()]);
-                break;
-            default:
-                System.out.println("undefined");
-                break;
+        String name = obj.getClass().getSimpleName();
+        switch (name) {
+            case "E1", "E2" -> System.out.println("it's " + name + "." + obj);
+            default -> System.out.println("undefined");
         }
     }
 }
