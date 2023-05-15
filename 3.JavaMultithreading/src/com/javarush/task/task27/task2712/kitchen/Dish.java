@@ -13,6 +13,6 @@ public enum Dish {
         for (Dish value : values()){
             builder.append(value).append(", ");
         }
-        return builder.toString().trim().substring(0 , builder.length() - 1);
+        return builder.substring(0 , builder.lastIndexOf(", "));
     }
 }
