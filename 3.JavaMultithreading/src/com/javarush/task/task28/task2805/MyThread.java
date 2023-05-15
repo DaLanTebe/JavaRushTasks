@@ -1,18 +1,20 @@
 package com.javarush.task.task28.task2805;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class MyThread extends Thread{
-    private static int priority = 1;
-    private static int counter = 0;
+    private static AtomicInteger priority = new AtomicInteger(1);
+    private static AtomicInteger counter = new AtomicInteger(1);
 
     {
-        if (counter == 10){
-            counter = 0;
-            priority = 1;
+        if (counter.get() == 10){
+            counter.set(0);
+            priority.set(1);
         }
-            if (this.getThreadGroup().getMaxPriority() < priority) {
+            if (this.getThreadGroup().getMaxPriority() < priority.get()) {
                 this.setPriority(this.getThreadGroup().getMaxPriority());
-        }else this.setPriority(priority++);
-        counter++;
+        }else this.setPriority(priority.getAndIncrement());
+        counter.incrementAndGet();
     }
 
     public MyThread() {
