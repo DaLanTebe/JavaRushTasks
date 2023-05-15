@@ -20,18 +20,23 @@ public class MyThread extends Thread {
 //        counter.incrementAndGet();
 //    }
 
-    private static AtomicInteger integer = new AtomicInteger(1);
+    //    private static AtomicInteger integer = new AtomicInteger(1);
+//    {
+//        int priority = integer.getAndIncrement();
+//        if (priority > MAX_PRIORITY){
+//            priority = MIN_PRIORITY;
+//        }
+//        integer.set(priority);
+//        setPriority(integer.getAndIncrement());
+//        if (getThreadGroup().getMaxPriority() < priority){
+//            setPriority(getThreadGroup().getMaxPriority());
+//        }
+//    }
+    private static AtomicInteger integer = new AtomicInteger(9);
     {
-        int priority = integer.getAndIncrement();
-        if (priority > MAX_PRIORITY){
-            priority = MIN_PRIORITY;
-        }
-        integer.set(priority);
-        setPriority(integer.getAndIncrement());
-        if (getThreadGroup().getMaxPriority() < priority){
-            setPriority(getThreadGroup().getMaxPriority());
-        }
+        setPriority(integer.incrementAndGet() % 10 + 1);
     }
+
     public MyThread() {
 
     }
