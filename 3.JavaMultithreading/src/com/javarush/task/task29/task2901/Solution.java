@@ -12,41 +12,41 @@ import java.util.List;
 */
 
 public class Solution {
-    public static final String defaultFileName = "C:/tmp/strange_file_name.tmp";
+    public static final String DEFAULT_FILE_NAME = "C:/tmp/strange_file_name.tmp";
 
     private final String localFileName;
-    private List<String> contentAslines;
-    private boolean fileLoaded;
+    private List<String> contentAsLines;
+    private boolean isLoaded;
 
     public Solution(String firstFileName) {
-        localFileName = firstFileName == null ? defaultFileName : firstFileName;
+        localFileName = firstFileName == null ? DEFAULT_FILE_NAME : firstFileName;
     }
 
     public static void main(String[] args) throws FileNotFoundException {
         String fileName = Solution.class.getResource("Solution.java").getPath();
 
         Solution solution = new Solution(fileName);
-        solution.DownloadFileContent();
-        if (solution.getFileLoaded()) {
-            System.out.println(solution.isexpectedline("public class Solution {"));   // Expected true
-            System.out.println(solution.isexpectedline(" public class Solution {"));  // Expected false
+        solution.downloadFileContent();
+        if (solution.isFileLoaded()) {
+            System.out.println(solution.hasExpectedLine("public class Solution {"));   // Expected true
+            System.out.println(solution.hasExpectedLine(" public class Solution {"));  // Expected false
         }
     }
 
-    public boolean getFileLoaded() {
-        return fileLoaded;
+    public boolean isFileLoaded() {
+        return isLoaded;
     }
 
-    public void DownloadFileContent() {
+    public void downloadFileContent() {
         try {
-            contentAslines = Files.readAllLines((new File(localFileName)).toPath(), Charset.defaultCharset());
-            fileLoaded = true;
+            contentAsLines = Files.readAllLines((new File(localFileName)).toPath(), Charset.defaultCharset());
+            isLoaded = true;
         } catch (IOException e) {
             System.out.println("Unsuccessful. What a surprise!");
         }
     }
 
-    public boolean isexpectedline(String expectedline) {
-        return contentAslines.contains(expectedline);
+    public boolean hasExpectedLine(String expectedLine) {
+        return contentAsLines.contains(expectedLine);
     }
 }
