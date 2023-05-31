@@ -31,7 +31,7 @@ public class BloodDBProxy implements DB{
     @Override
     public List<BloodSample> find(String request) {
         if (security.isAuthorized()){
-            db.find(request);
+           return db.find(request);
         }
         return List.of(denied);
     }
