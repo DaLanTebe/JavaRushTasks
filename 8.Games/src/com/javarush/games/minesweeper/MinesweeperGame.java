@@ -52,7 +52,7 @@ public class MinesweeperGame extends Game {
         }
     }
      private void openTile(int x, int y){
-        if (!isGameStopped) {
+        if (!isGameStopped && !gameField[y][x].isOpen && !gameField[y][x].isFlag) {
             gameField[y][x].isOpen = true;
             setCellColor(x, y, Color.WHITE);
             if (gameField[y][x].isMine) {
@@ -116,6 +116,6 @@ public class MinesweeperGame extends Game {
     }
     private void gameOver(){
         isGameStopped = true;
-        showMessageDialog(Color.WHITE, "Lose", Color.BLACK, 20);
+        showMessageDialog(Color.WHITE, "Lose", Color.BLACK, 30);
     }
 }
