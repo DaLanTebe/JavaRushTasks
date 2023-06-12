@@ -65,8 +65,26 @@ public class MinesweeperGame extends Game {
                 }
             } else setCellNumber(x, y, gameField[y][x].countMineNeighbors);
         }
-
      }
+
+    @Override
+    public void onMouseRightClick(int x, int y) {
+        markTile(x, y);
+    }
+
+    private  void markTile(int x, int y){
+        if (!gameField[y][x].isOpen && countFlags != 0 && !gameField[y][x].isFlag) {
+            gameField[y][x].isFlag = true;
+            countFlags--;
+            setCellValue(x, y, FLAG);
+            setCellColor(x, y, Color.RED);
+        } else if (gameField[y][x].isFlag) {
+            gameField[y][x].isFlag = false;
+            countFlags++;
+            setCellValue(x, y, "");
+            setCellColor(x, y, Color.ORANGE);
+        }
+    }
 
     @Override
     public void onMouseLeftClick(int x, int y) {
