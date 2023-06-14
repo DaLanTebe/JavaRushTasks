@@ -14,21 +14,15 @@ public class Solution {
     public static String getAllNumbersBetween(int a, int b) {
         StringBuilder builder = new StringBuilder();
         if (b > a){
-            builder.append(a);
-            a++;
-            while (b >= a){
-                builder.append(" ").append(a);
-                a++;
+            for (int i = a; i <= b; i++) {
+                builder.append(i).append(" ");
             }
-            return builder.toString();
+            return builder.toString().trim();
         }  if (b < a) {
-            builder.append(a);
-            a--;
-            while (a >= b){
-                builder.append(" ").append(a);
-                a--;
+            for (int i = a; i >= b; i--) {
+                builder.append(i).append(" ");
             }
-            return builder.toString();
+            return builder.toString().trim();
         }
         return Integer.toString(a);
     }
