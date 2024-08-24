@@ -83,7 +83,7 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
         }catch (ClassCastException e){
             throw new UnsupportedOperationException();
         }
-        
+        return true;
     }
 
     public String set(int index, String element){
