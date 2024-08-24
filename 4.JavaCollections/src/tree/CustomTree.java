@@ -1,20 +1,22 @@
 package tree;
 
-import javax.management.Query;
 import java.io.Serializable;
-import java.util.AbstractList;
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 
 public class CustomTree extends AbstractList<String> implements Cloneable, Serializable {
 
-    Entry<String> root;
+    private Entry<String> root;
+    private int size = 0;
 
-    public CustomTree(Entry<String> root) {
-        this.root = root;
+    public CustomTree() {
+        root = new Entry<>("1");
+        size();
     }
+    public CustomTree(Entry<String> root) {
+            this.root = root;
+            size();
+        }
 
     @Override
     public boolean add(String s) {
@@ -28,12 +30,14 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
                 stringEntry.leftChild = new Entry<>(s);
                 stringEntry.leftChild.parent = stringEntry;
                 stringEntry.availableToAddLeftChildren = false;
+                size();
                 return true;
             } else if (stringEntry.availableToAddRightChildren) {
                 entries.clear();
                 stringEntry.rightChild = new Entry<>(s);
                 stringEntry.rightChild.parent = stringEntry;
                 stringEntry.availableToAddRightChildren = false;
+                size();
                 return true;
             } else {
                 entries.add(stringEntry.leftChild);
@@ -52,25 +56,42 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
 
     @Override
     public int size() {
-        int size = 1;
+        size = 0;
+        ArrayDeque<Entry<String>> entries = new ArrayDeque<>();
+        Entry<String> stringEntry;
+        entries.add(root);
 
-        if (!root.availableToAddLeftChildren){
-            size += new CustomTree(root.leftChild).size();
-        }
-        if (!root.availableToAddRightChildren){
-            size += new CustomTree(root.rightChild).size();
+        while (!entries.isEmpty()){
+            stringEntry = entries.poll();
+            if (!stringEntry.availableToAddLeftChildren){
+                size++;
+                entries.add(stringEntry.leftChild);
+            }
+            if (!stringEntry.availableToAddRightChildren){
+                size++;
+                entries.add(stringEntry.rightChild);
+            }
         }
         return size;
+    }
+
+    @Override
+    public boolean remove(Object o){
+        String str;
+        try {
+            str = (String) o;
+        }catch (ClassCastException e){
+            throw new UnsupportedOperationException();
+        }
+        
     }
 
     public String set(int index, String element){
         throw new UnsupportedOperationException();
     }
+
     public void add(int index, String element){
 
-        throw new UnsupportedOperationException();
-    }
-    public String remove(int index){
         throw new UnsupportedOperationException();
     }
     public List<String> subList(int fromIndex, int toIndex){
@@ -84,17 +105,23 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
     }
 
     public String getParent(String number) {
-         String name = null;
-        if (root.elementName.equals(number)){
-            return root.parent.elementName;
-        }
-        if (!root.availableToAddLeftChildren){
-            name = new CustomTree(root.leftChild).getParent(number);
-        }
-        if (!root.availableToAddRightChildren){
-            name = new CustomTree(root.rightChild).getParent(number);
-        }
-        return name;
+        LinkedList<Entry<String>> strings = new LinkedList<>();
+
+        strings.add(root);
+        Entry<String> entry;
+        while (!strings.isEmpty()){
+            entry = strings.poll();
+            if (entry.elementName.equals(number) && entry.parent != null){
+                return entry.parent.elementName;
+            }
+            if (!entry.availableToAddLeftChildren){
+                strings.add(entry.leftChild);
+            }
+            if (!entry.availableToAddRightChildren){
+                strings.add(entry.rightChild);
+            }
+         }
+        return null;
     }
 
     static class Entry<T> implements Serializable {

@@ -6,7 +6,7 @@ import java.util.TreeMap;
 public class Solution {
 
         public static void main(String[] args) {
-            List<String> list = new CustomTree(new CustomTree.Entry<>("21"));
+            List<String> list = new CustomTree();
 
             for (int i = 1; i < 16; i++) {
                 list.add(String.valueOf(i));
