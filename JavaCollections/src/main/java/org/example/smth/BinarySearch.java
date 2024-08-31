@@ -12,7 +12,7 @@ public class BinarySearch {
         }
         ints[100001] = 8;
         Arrays.sort(ints);
-        System.out.println(STR."\{binarySearch(ints, 8, 0, ints.length - 1)} \{System.currentTimeMillis()}");
+//        System.out.println(STR."\{binarySearch(ints, 8, 0, ints.length - 1)} \{System.currentTimeMillis()}");
     }
     private static int binarySearch (int[] sortedArray, int valueToFind, int low, int high){
         int index = -1;
