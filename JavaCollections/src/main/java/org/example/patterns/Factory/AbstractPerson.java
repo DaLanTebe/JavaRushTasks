@@ -1,4 +1,4 @@
-package org.example.Patterns.Factory;
+package org.example.patterns.Factory;
 
 public abstract class AbstractPerson {
 }

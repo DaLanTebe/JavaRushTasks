@@ -1,4 +1,4 @@
-package org.example.Patterns;
+package org.example.patterns;
 
 public class Adapter {
     interface Time {
